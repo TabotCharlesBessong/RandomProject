@@ -1,0 +1,51 @@
+
+body{
+  background: #ceb0ce;
+  min-height: 100vh;
+  text-align: center;
+  padding: 100px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.container{
+  background: #fff;
+  width: 80vw;
+  padding: 40px;
+  height: 55vh;
+  border-left: 4px solid #f0b852;
+}
+.quote-text{
+  min-height: 35vh;
+
+}
+
+.container h1{
+  font-size: 50px;
+  text-align: left;
+}
+
+.container p{
+  text-transform: capitalize;
+  color: #ceb0ce;
+  text-align: right;
+  font-style: italic;
+  font-size: 30px;
+}
+
+#btn{
+  margin-top: 30px;
+  font-size: 25px;
+  padding: 10px;
+  background: #222;
+  color: #f15025;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 1rem;
+}
+
+#btn:hover{
+  color: #222;
+  background: #f15025;
+  cursor: pointer;
+}
