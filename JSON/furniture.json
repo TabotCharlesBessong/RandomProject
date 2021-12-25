@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 [
     { 
+=======
+
+[
+    {
+>>>>>>> 73b6ed7dda50c6dbf1f3cf5c8566ca7aff006f3d
         "name" : "Armchair",
         "category" : "Chair",
         "price" : "50.25",
@@ -119,4 +125,8 @@
         "price" : "288.99",
         "imgSrc" : "images/wooden-table.png"
     }
+<<<<<<< HEAD
 ]
+=======
+]
+>>>>>>> 73b6ed7dda50c6dbf1f3cf5c8566ca7aff006f3d
