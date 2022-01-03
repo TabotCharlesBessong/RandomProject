@@ -7,3 +7,22 @@ body{
   align-items: center;
   justify-content: center;
 }
+
+button{
+  color: #fff;
+  background: #222;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  bottom: 3%;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  /* display: inline-block; */
+  border: none;
+}
+button:hover{
+  color: #222;
+  background: #fff;
+}
