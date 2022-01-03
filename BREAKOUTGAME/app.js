@@ -4,10 +4,10 @@
 const canvas = document.querySelector("#canvas")
 const ctx = canvas.getContext('2d')
 
-let x = 100
-let y = 100
-const dx = 5 
-const dy = 3
+let x = canvas.width / 2
+let y = canvas.height / 2
+let dx = 8 
+let dy = -4
 
 ctx.beginPath()
 ctx.arc(x,y,30,0,2 * Math.PI, false)
@@ -18,21 +18,25 @@ ctx.closePath()
 // drawCirlce(x,y);
 
 setInterval(()=>{
-  x += dx
-  y += dy 
-  // x += 75
-  // y += 50 
-  // if(x >= 900 || y < 600){
-    // x -= 50
-    // y+= 25
-  // }else if(x >=900 || y >= 600){
-    // x -=50
-    // y-= 50
-  // }
+
+  detectCollision()
   ctx.clearRect(0,0,canvas.width , canvas.height)
   drawCirlce(x,y)
   
-},100)
+},50)
+
+const detectCollision = ()=>{
+  x += dx
+  y += dy 
+  if(x >= canvas.width || y >= canvas.height){
+    dx = -dx 
+    dy = -dy
+    }
+  if(x < 0 || y < 0){
+    dx = -dx 
+    dy = -dy
+    }
+  }
 
 const drawCirlce = (x,y)=>{
   ctx.beginPath()

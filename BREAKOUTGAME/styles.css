@@ -1,0 +1,9 @@
+
+
+body{
+  background: #ccc;
+  display: flex;
+  padding-top: 5rem;
+  align-items: center;
+  justify-content: center;
+}
