@@ -5,3 +5,4 @@
 4. Player movement
 5. Craeting our game platform 
 6. "Scroll" Background
+7. Win Scenario
