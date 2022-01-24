@@ -30,6 +30,7 @@ class Player {
   update(){
     this.draw()
     this.position.y += this.velocity.y
+    this.position.x += this.velocity.x
     if(this.position.y + this.Height + this.velocity.y <= canvas.height ){
       this.velocity.y += gravity
     }else{
@@ -39,6 +40,14 @@ class Player {
 }
 
 const player = new Player()
+const keys = {
+  right:{
+    pressed:false
+  },
+  left:{
+    pressed:false
+  }
+}
 // player.draw()
 // player.update()
 
@@ -46,5 +55,59 @@ const animate = ()=>{
   requestAnimationFrame(animate)
   c.clearRect(0,0,canvas.width,canvas.height)
   player.update()
+
+  if(keys.right.pressed){
+    player.velocity.x = 5
+  }
+  else if(keys.left.pressed){
+    player.velocity.x = -5
+  }
+  else{
+    player.velocity.x = 0
+  }
 }
 animate()
+
+window.addEventListener('keydown',({keyCode})=>{
+  switch(keyCode){
+    case 37:
+      keys.left.pressed = true 
+      // left movement
+      player.velocity.x -= 5
+      break
+    case 38:
+      // upward movement
+      player.velocity.y -= 5
+      break
+    case 39:
+      // right movement
+      keys.right.pressed = true
+      player.velocity.x += 5
+      break
+    case 40:
+      // downward movement
+      player.velocity.y += 5
+      break
+    default:
+  }
+})
+
+window.addEventListener('keyup',({keyCode})=>{
+  switch(keyCode){
+    case 37:
+      keys.left.pressed = false
+      player.velocity.x = 0
+      break
+    case 38:
+      player.velocity.y = 0
+      break
+    case 39:
+      keys.right.pressed = false
+      player.velocity.x = 0
+      break
+    case 40:
+      player.velocity.y = 0
+      break
+    default:
+  }
+})
