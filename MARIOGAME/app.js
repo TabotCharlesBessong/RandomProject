@@ -20,24 +20,41 @@ class Player {
       y:1
     }
     this.width = 30
-    this.Height = 30
+    this.height = 30
 
   }
   draw(){
     c.fillStyle = "orange"
-    c.fillRect(this.position.x,this.position.y,this.width,this.Height)
+    c.fillRect(this.position.x,this.position.y,this.width,this.height)
   }
   update(){
     this.draw()
     this.position.y += this.velocity.y
     this.position.x += this.velocity.x
-    if(this.position.y + this.Height + this.velocity.y <= canvas.height ){
+    if(this.position.y + this.height + this.velocity.y <= canvas.height ){
       this.velocity.y += gravity
     }else{
       this.velocity.y = 0
     }
   }
 }
+
+class Platform {
+  constructor(){
+    this.position = {
+      x:200,
+      y:100
+    }
+    this.height = 20
+    this.width = 200
+  }
+  draw(){
+    c.fillStyle ='green'
+    c.fillRect(this.position.x,this.position.y,this.width,this.height)
+  }
+}
+
+const platform = new Platform()
 
 const player = new Player()
 const keys = {
@@ -51,10 +68,13 @@ const keys = {
 // player.draw()
 // player.update()
 
+
+
 const animate = ()=>{
   requestAnimationFrame(animate)
   c.clearRect(0,0,canvas.width,canvas.height)
   player.update()
+  platform.draw()
 
   if(keys.right.pressed){
     player.velocity.x = 5
@@ -64,6 +84,11 @@ const animate = ()=>{
   }
   else{
     player.velocity.x = 0
+  }
+  
+  // platform collision detection 
+  if(player.position.y + player.height <= platform.position.y && player.position.y + player.height + player.velocity.y >= platform.position.y && player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x + platform.width ){
+    player.velocity.y = 0
   }
 }
 animate()
