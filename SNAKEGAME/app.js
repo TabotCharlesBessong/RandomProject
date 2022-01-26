@@ -4,25 +4,29 @@ const canvas = document.querySelector("#canvas")
 // console.log(canvas);
 const ctx = canvas.getContext('2d')
 // console.log(ctx);
+let snakeW = 5
+let dx =  0
+let dy = 0  
 let direction = 'x'
-let snakeH =  snakeW = 10
+let snakeH =  5
+
 let canvasH = canvas.height 
 let canvasW = canvas.width 
-let downPressed = upPressed = leftPressed = rightPresses = false
+let downPressed = upPressed = leftPressed = rightPressed = false
 
-let snakes = [
-  {x:40,y:10},
-  {x:30,y:10},
+let snake = [
+  {x:25,y:10}, 
   {x:20,y:10},
+  {x:15,y:10},
   {x:10,y:10},
 ]
 
 // function declaration 
 const drawSnake = ()=>{
-  snakes.forEach(snake =>{
+  snake.forEach(snake =>{
     ctx.beginPath()
     ctx.rect(snake.x,snake.y,snakeW,snakeH)
-    ctx.fillStyle = "black"
+    ctx.fillStyle = "orange"
     ctx.fill()
     ctx.closePath()
   })
@@ -30,13 +34,47 @@ const drawSnake = ()=>{
 
 const moveSnake = ()=>{
   setInterval(()=>{
-    if(downPressed){
-      direction = 'y'
+    // {x:40,y:10},
+    // {x:30,y:10},
+    // {x:20,y:10},
+    // {x:10,y:10},
+    
+    handleDirection()
+
+    
+    const head = {
+      x: snake[0].x + dx , y :snake[0].y + dy
     }
-    snakes.forEach(snake => snake[direction] +=10)
+    snake.unshift(head)
+    snake.pop()
+    // if(downPressed){ 
+      // direction = 'y'
+    // }
+    // // snake.forEach(snake => snake[direction] +=10)
     ctx.clearRect(0,0,canvasH,canvasW)
     drawSnake()
   },100)
+}
+
+
+
+const handleDirection = ()=>{
+  if(downPressed){
+    dy = snakeH
+    dx = 0
+  }
+  if(rightPressed){
+    dx = snakeW
+    dy = 0
+  }
+  if(upPressed){
+    dy = -snakeH
+    dx = 0
+  }
+  if(leftPressed){
+    dx = -snakeW
+    dy = 0
+  }
 }
 
 const snakeNavigation = ()=>{
@@ -55,7 +93,7 @@ const handleKeyDown = (e)=>{
     leftPressed = true
   }
   if(e.key === 'ArrowRight'){
-    rightPresses = true
+    rightPressed = true
   }
 }
 
@@ -70,7 +108,7 @@ const handleKeyUp = (e)=>{
     leftPressed = false
   }
   if(e.key === 'ArrowRight'){
-    rightPresses = false
+    rightPressed = false
   }
 }
 
