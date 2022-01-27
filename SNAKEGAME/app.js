@@ -15,7 +15,7 @@ let snakeH =  5
 
 let canvasH = canvas.height 
 let canvasW = canvas.width 
-
+let score  = 0 
 let snake 
 
 
@@ -57,6 +57,7 @@ const moveSnake = ()=>{
       ctx.clearRect(0,0,canvasH,canvasW)
       drawSnake()
       drawFood()
+      drawScore()
     },100)
   }
   
@@ -135,6 +136,7 @@ const growSnake = ()=>{
   if(snake[0].x === randomX && snake[0].y === randomY ){
     snake.push({x:randomX,y:randomY})
     randomPosition()
+    score += 1
   }
 }
 
@@ -158,6 +160,14 @@ const setVariables = ()=>{
   dy = 0 
   downPressed = upPressed = leftPressed = rightPressed = false
   snake = [{x:10,y:10}]
+  score = 0
+}
+
+
+const drawScore = ()=>{
+  ctx.beginPath()
+  ctx.fillText("Score: " + score , 10,10)
+  ctx.closePath()
 }
 
 // function invokation 
