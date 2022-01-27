@@ -7,7 +7,9 @@ const ctx = canvas.getContext('2d')
 let snakeW = 5
 let dx =  0
 let dy = 0  
-let direction = 'x'
+// let direction = 'x'
+let randomX 
+let randomY
 let snakeH =  5
 
 let canvasH = canvas.height 
@@ -15,9 +17,9 @@ let canvasW = canvas.width
 let downPressed = upPressed = leftPressed = rightPressed = false
 
 let snake = [
-  {x:25,y:10}, 
-  {x:20,y:10},
-  {x:15,y:10},
+  // {x:25,y:10}, 
+  // {x:20,y:10},
+  // {x:15,y:10}, 
   {x:10,y:10},
 ]
 
@@ -40,7 +42,7 @@ const moveSnake = ()=>{
     // {x:10,y:10},
     
     handleDirection()
-
+    growSnake()
     
     const head = {
       x: snake[0].x + dx , y :snake[0].y + dy
@@ -53,6 +55,7 @@ const moveSnake = ()=>{
     // // snake.forEach(snake => snake[direction] +=10)
     ctx.clearRect(0,0,canvasH,canvasW)
     drawSnake()
+    drawFood()
   },100)
 }
 
@@ -112,9 +115,32 @@ const handleKeyUp = (e)=>{
   }
 }
 
+const drawFood = ()=>{
+  ctx.beginPath()
+  ctx.rect(randomX,randomY,snakeW,snakeH)
+  ctx.fillStyle = "green"
+  ctx.fill()
+  ctx.closePath()
+}
+
+const randomPosition = ()=>{
+  randomX = Math.floor(Math.random() * 290 / 5) * 5
+  randomY = Math.floor(Math.random() * 290 / 5) * 5
+}
+
+const growSnake = ()=>{
+  if(snake[0].x === randomX && snake[0].y === randomY ){
+    snake.push({x:randomX,y:randomY})
+    randomPosition()
+  }
+}
+
 // function invokation 
 drawSnake()
+drawFood()
 moveSnake()
 snakeNavigation()
+randomPosition()
+
 // handleKeyDown()
-// handleKeyUp()
+// handleKeyUp() 
