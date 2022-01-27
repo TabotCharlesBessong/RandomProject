@@ -17,6 +17,7 @@ let canvasH = canvas.height
 let canvasW = canvas.width 
 let score  = 0 
 let snake 
+rounds = []
 
 
 
@@ -149,6 +150,8 @@ const collisionDetection = ()=>{
 
 const resetGame = ()=>{
   clearInterval(interval)
+  rounds.push({score:score})
+  showScore()
   setVariables()
   randomPosition()
   moveSnake()
@@ -170,6 +173,11 @@ const drawScore = ()=>{
   ctx.closePath()
 }
 
+const showScore = ()=>{
+  const score = document.querySelector("#scoreul")
+  score.innerHTML = rounds.map(round => `<li>Score : ${round.score}</li> ` )
+}
+
 // function invokation 
 setVariables()
 drawSnake()
@@ -177,7 +185,7 @@ drawFood()
 moveSnake()
 snakeNavigation()
 randomPosition()
-
+showScore()
 
 // handleKeyDown()
 // handleKeyUp() 
