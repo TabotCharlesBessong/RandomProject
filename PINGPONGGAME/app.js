@@ -5,7 +5,7 @@ const canvasH = canvas.height
 const canvasW = canvas.width
 
 let ball = {
-  x:150 , y:150 , r:10 , dx:2 , dy:1
+  x:150 , y:150 , r:10 , dx:2 , dy:-1
 }
 
 let leftPaddle = {
@@ -48,7 +48,8 @@ const moveBall = ()=>{
   rightPaddle.y = ball.y - (paddle.h / 2)
   ctx.clearRect(0,0,canvasW,canvasH)
   
-  collisionDetection()
+  // ballWallHeightCollision()
+  ballCollisionDetection()
   drawBall()
   drawLeftPaddle()
   drawRightPaddle()
@@ -56,9 +57,19 @@ const moveBall = ()=>{
   requestAnimationFrame(moveBall)
 }
 
-const collisionDetection = ()=>{
+const ballCollisionDetection = ()=>{
 
+  // left or right collision detection
+  if(ball.x  > rightPaddle.x - ball.r || ball.x < leftPaddle.x + ball.r ){
+    ball.dx = -ball.dx
+  }
+  // top or bottom  collision detection
+  if(ball.y > canvasH - ball.r || ball.y < 0 + ball.r ){
+    ball.dy = -ball.dy
+  }
 }
+
+  
 
 
 drawBall()
