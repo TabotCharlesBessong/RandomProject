@@ -4,17 +4,7 @@ const ctx = canvas.getContext('2d')
 const canvasH = canvas.height
 const canvasW = canvas.width
 
-let ball = {
-  x:150 , y:150 , r:10 , dx:2 , dy:-1
-}
-
-let leftPaddle = {
-  x:0 , y :125 
-}
-
-let rightPaddle = {
-  x:canvasW - 5 , y :125 
-}
+let ball = leftPaddle = rightPaddle = {}
 
 let paddle = {
   w:5,h:50
@@ -59,20 +49,53 @@ const moveBall = ()=>{
 
 const ballCollisionDetection = ()=>{
 
-  // left or right collision detection
-  if(ball.x  > rightPaddle.x - ball.r || ball.x < leftPaddle.x + ball.r ){
+  // right paddle collision detection
+  if(ball.x  > rightPaddle.x - ball.r  ){
+    ball.dx = -ball.dx
+  }
+  // left paddle collision detection
+  if((ball.x  < 0 + ball.r + paddle.w ) && (ball.y > leftPaddle.y) && (ball.y < leftPaddle.y  + paddle.h  )){
     ball.dx = -ball.dx
   }
   // top or bottom  collision detection
   if(ball.y > canvasH - ball.r || ball.y < 0 + ball.r ){
     ball.dy = -ball.dy
   }
+  // left side detection
+  if(ball.x < 0 + ball.r  ){
+    alert('Game over')
+    resetGame()
+    // moveBall()
+    setVariables()
+  }
 }
 
+const moveLeftPaddle = ()=>{
+  document.addEventListener('mousemove', (e)=>{
+    leftPaddle.y = e.screenY - 350 
+    // console.log(e.screenY);
+  })
+}
+
+const setVariables = ()=>{
+  ball = {
+    x:150 , y:150 , r:10 , dx:2 , dy:1
+  }
+  
+  leftPaddle = {
+    x:0 , y :125 
+  }
+  
+  rightPaddle = {
+    x:canvasW - 5 , y :125 
+  }
+  
+}
   
 
-
+setVariables()
 drawBall()
 drawLeftPaddle()
 drawRightPaddle()
 moveBall()
+moveLeftPaddle()
