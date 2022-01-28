@@ -9,10 +9,12 @@ let ball = leftPaddle = rightPaddle = {}
 let paddle = {
   w:5,h:50
 }
+let score 
 
 
 const drawBall = ()=>{
   ctx.beginPath()
+  ctx.setLineDash([])
   ctx.arc(ball.x,ball.y,ball.r,0,2 * Math.PI)
   ctx.stroke()
   ctx.closePath()
@@ -20,6 +22,7 @@ const drawBall = ()=>{
 
 const drawLeftPaddle = ()=>{
   ctx.beginPath()
+  ctx.setLineDash([])
   ctx.rect(leftPaddle.x , leftPaddle.y , paddle.w , paddle.h)
   ctx.stroke()
   ctx.closePath()
@@ -27,6 +30,7 @@ const drawLeftPaddle = ()=>{
 
 const drawRightPaddle = ()=>{
   ctx.beginPath()
+  ctx.setLineDash([])
   ctx.rect(rightPaddle.x , rightPaddle.y , paddle.w , paddle.h)
   ctx.stroke()
   ctx.closePath()
@@ -43,6 +47,8 @@ const moveBall = ()=>{
   drawBall()
   drawLeftPaddle()
   drawRightPaddle()
+  drawScore()
+  drawLine()
 
   requestAnimationFrame(moveBall)
 }
@@ -55,11 +61,14 @@ const ballCollisionDetection = ()=>{
   }
   // left paddle collision detection
   if((ball.x  < 0 + ball.r + paddle.w ) && (ball.y > leftPaddle.y) && (ball.y < leftPaddle.y  + paddle.h  )){
-    ball.dx = -ball.dx
+    ball.dx = -ball.dx + 0.2
+    ball.dy += 0.1
+    score += 1
   }
   // top or bottom  collision detection
   if(ball.y > canvasH - ball.r || ball.y < 0 + ball.r ){
     ball.dy = -ball.dy
+
   }
   // left side detection
   if(ball.x < 0 + ball.r  ){
@@ -89,7 +98,26 @@ const setVariables = ()=>{
   rightPaddle = {
     x:canvasW - 5 , y :125 
   }
+  score = 1 
   
+}
+
+const drawScore  = ()=>{
+  ctx.beginPath()
+  ctx.fillStyle = "#000"
+  ctx.fill()
+  ctx.fillText("Score: "+ score , 20 ,10)
+  ctx.closePath()
+}
+
+const drawLine = ()=>{
+  ctx.beginPath()
+  // ctx.fillText("Score: "+ score , 20 ,10)
+  ctx.setLineDash([5,5])
+  ctx.moveTo(150,0)
+  ctx.lineTo(150,canvasH)
+  ctx.stroke()
+  ctx.closePath()
 }
   
 
@@ -99,3 +127,4 @@ drawLeftPaddle()
 drawRightPaddle()
 moveBall()
 moveLeftPaddle()
+// drawLine()
