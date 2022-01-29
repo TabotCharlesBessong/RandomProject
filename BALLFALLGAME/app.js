@@ -54,7 +54,7 @@ function movePlatforms() {
   }, 20);
 }
 function checkGameOver() {
-  if (ball.y < 0) {
+  if (ball.y < 0) { 
     alert("Game Over !!");
     reset();
   }
