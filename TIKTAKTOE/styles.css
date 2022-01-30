@@ -2,17 +2,36 @@
 html{
   font-size: 62.5%;
 }
-td{
-  border: 2px solid black;
-}
 
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30% 0;
+  /* width: 100vh; */
+  /* height: 100vh; */
+}
 table{
   border-collapse: collapse;
 }
+h1{ 
+  text-align: center;
+  /* position: absolute; */
+  /* top: 10%; */
+  /* left: 20%; */
+  font-size: 3rem;
+  text-transform: capitalize;
+  color: green;
+ } 
 
 td{
-  width: 5rem;
-  height: 5rem;
+  width: 10rem;
+  height: 10rem;
+  border: 2px solid black;
+  cursor: pointer;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 600;
   /* width: 100px; */
 
 }
