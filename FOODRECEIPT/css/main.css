@@ -357,3 +357,78 @@ Navbar
     margin-left: auto;
   }
 }
+
+/*
+=============== 
+Pages
+===============
+*/
+.page{
+  /* background: red; */
+  /* height: calc(); */
+  max-width: var(--max-width);
+  width: 90vw;
+  margin: 0 auto;
+  padding-top: 2rem;
+  min-height: calc(100vh - (6rem + 4rem));
+}
+
+/*
+=============== 
+hero
+===============
+*/
+.hero{
+  height: 100%;
+  background: url('../assets/main.jpeg') center/cover no-repeat;
+  margin-bottom: 2rem;
+  border-radius: var(--borderRadius);
+  position: relative;
+}
+.hero-container{
+  /* position: absolute; */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  /* border-radius: var(--b); */
+  border-radius: var(--borderRadius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text{
+  text-align: center;
+  color: var(--white);
+}
+
+/*
+=============== 
+Footer
+===============
+*/
+
+.page-footer{
+  height: 4rem;
+  /* text-align: center; */
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-footer p{
+  margin-bottom: 0;
+  /* color: ; */
+}
+.page-footer a{
+  color: var(--primary-500);
+}
+
+@media screen and (min-width:768px) {
+  .hero-text h1{
+    
+  }
+}
