@@ -307,7 +307,7 @@ Navbar
   letter-spacing: var(--letterSpacing);
   padding: 1rem 0;
   border-top: 1px solid var(--grey-500);
-  transition: var(--transition);
+  transition: 0.85s ease-out all;
 }
 .nav-link:hover{
   color: var(--primary-500);
@@ -324,4 +324,36 @@ Navbar
 
 .show-links{
   height: 310px;
+}
+
+@media screen and (min-width:990px) {
+  .nav-btn{
+    display: none;
+  }
+  .navbar{
+    height: 6rem;
+  }
+  .nav-center{
+    display: flex;
+    align-items: center;
+  }
+  .nav-header{
+    height: auto;
+    margin-right: 2rem;
+  }
+  .nav-links{
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+  .nav-link{
+    padding: 0;
+    border-top: none;
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+  .contact-link{
+    margin-left: auto;
+  }
 }
