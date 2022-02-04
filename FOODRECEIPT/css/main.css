@@ -535,3 +535,17 @@ Recipe
     font-size: 1.15rem;
   }
 } 
+
+/*
+=============== 
+Error
+===============
+*/
+
+.error-page{
+  text-align: center;
+  padding: 5rem 0 0 ;
+}
+.error-page h1{
+  font-size: 9rem;
+}
