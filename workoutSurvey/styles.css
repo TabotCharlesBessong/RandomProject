@@ -5,6 +5,112 @@
   box-sizing: border-box;
 }
 
-body{
+html{
   font-size: 62.5%;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tracker{
+ font-size: 1.4rem;
+ border-collapse: collapse;
+ width: 600px; 
+ margin-top: 15%; 
+ overflow: scroll;
+}
+
+.tracker,
+.tracker * {
+  font-family: sans-serif;
+}
+
+.tracker th{
+  font-size: 1.15em;
+  text-align: left;
+  font-weight: normal;
+  color: #fff;
+  background: #1ab785;
+}
+
+.tracker th,
+.tracker td{
+  padding: 0.75em;
+}
+
+.tracker__entries  .tracker__row{
+  background: #eee;
+}
+
+.tracker__entries  .tracker__row:nth-child(odd){
+  background: #ccc;
+}
+
+.tracker__date ,
+.tracker__workout,
+.tracker__duration{
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 1em;
+  height: 2.5em;
+  padding: 0.5em 0;
+  bottom: none;
+  outline: none;
+}
+
+.tracker__duration{
+  width: 5em;
+  text-align: right;
+}
+
+.tracker__btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  outline: none;
+  color: red;
+  font-size: 1.5em;
+  margin-left: 0.5em;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.tracker__btn:hover{
+  background:rgba(0, 0, 0, 0.1) ;
+}
+
+.tracker__row__add{
+  border-top: 3px solid #333;
+  border-bottom: 3px solid #333;
+  background: #fff;
+}
+
+.tracker__row__add td{
+  text-align: right;
+}
+
+.tracker__add{
+  display: inline-block;
+  padding: 0.8em 1em;
+  color: #1ab785;
+  cursor: pointer;
+}
+
+.tracker__add:hover{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width:550px) {
+  .tracker td{
+    text-align: center;
+  }
+  .tracker th,
+.tracker td{
+  padding: 0.25em;
+}
 }
