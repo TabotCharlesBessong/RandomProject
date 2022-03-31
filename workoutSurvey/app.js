@@ -1,3 +1,8 @@
 
+import Workout from "./workout.js";
 
-// alert("Hello world")
+const app = document.querySelector("#app")
+
+const wt = new Workout(app)
+window.wt = wt
+console.log(wt);
