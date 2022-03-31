@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout tracer</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  
+  <div class="app" id="app">
+    <table class="tracker">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Workout</th>
+          <th>Duration</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="enteries">
+        <tr class="tracker__row" >
+          <td>
+            <input type="date" class="tracker__date" >
+          </td>
+          <td>
+            <select type="date" class="tracker__workout" >
+              <option value="walking">walking</option>
+              <option value="outdoor-cycling">outdoor cycling</option>
+              <option value="indoor-cycling">indoor cycling</option>
+              <option value="walking">walking</option>
+              <option value="running">running</option>
+              <option value="swimming">swimming</option>
+              <option value="yoga">yoga</option>
+              <option value="juging">juging</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" class="tracker__duration" >
+            <span class="tracker__text">minutes</span>
+          </td>
+
+          <td>
+            <button type="button" class="tracker__btn" >
+              &times;
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr class="tracker__row tracker__row__add" >
+           <td colspan="4" >
+             <span class="tracker__add">
+               Add Entry
+             </span>
+           </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="./app.js" type="module" ></script>
+</body>
+</html>
