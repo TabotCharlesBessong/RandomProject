@@ -83,11 +83,22 @@ export default class Workout {
       temp.innerHTML = Workout.rowHtml().trim()
       row = temp.content.firstElementChild
       tableBd.appendChild(row)
+      row.querySelector("tracker__date").value = data.date
+      row.querySelector("tracker__workout").value = data.workout
+      row.querySelector("tracker__duration").value = data.duration
+
+      // add event for input changing 
     }
 
     tableBd.querySelectorAll(".tracker__row").forEach(row => {
-      row.delete()
+      row.remove()
     })
-    this.entries.forEach(()=> addRow(data))
+    this.entries.forEach((data)=> addRow(data))
+  }
+
+  addEntries(data){
+    this.entries.push(data)
+    this.saveEnteries()
+    this.updateView()
   }
 }
